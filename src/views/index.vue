@@ -14,6 +14,7 @@
         background-color="#304156"
         text-color="#bfcbd9"
         active-text-color="#409EFF"
+        router
       >
         <!-- 动态生成菜单 -->
         <template v-for="group in groupedRoutes" :key="group.key">
@@ -25,8 +26,7 @@
             <el-menu-item
               v-for="route in group.routes"
               :key="route.path"
-              :index="route.path"
-              @click="navigate(route.path)"
+              :index="'/' + route.path"
             >
               <span>{{ route.meta?.title || route.name }}</span>
             </el-menu-item>
@@ -189,10 +189,6 @@ const toggleNotes = () => {
   isNotesCollapsed.value = !isNotesCollapsed.value;
 };
 
-const navigate = (path) => {
-  router.push("/" + path);
-};
-
 // 动态加载 markdown 文件
 const loadMarkdown = async (mdPath) => {
   if (!mdPath) {
@@ -210,11 +206,9 @@ const loadMarkdown = async (mdPath) => {
         Promise.resolve(mod.default),
       );
     } else {
-      console.warn(`Markdown file not found: ${fullPath}`);
       currentMdComponent.value = null;
     }
   } catch (error) {
-    console.error("Failed to load markdown:", error);
     currentMdComponent.value = null;
   }
 };
