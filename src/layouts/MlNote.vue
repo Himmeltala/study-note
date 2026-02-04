@@ -77,11 +77,7 @@ watch(
     </div>
 
     <div class="note-content">
-      <component
-        v-if="currentMdComponent"
-        :is="currentMdComponent"
-        class="markdown-body"
-      />
+      <component v-if="currentMdComponent" :is="currentMdComponent" />
       <div v-else class="empty-note">
         <el-empty description="暂无学习笔记">
           <el-button type="primary" @click="$router.push('/')">

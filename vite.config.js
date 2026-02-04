@@ -1,10 +1,10 @@
-import { defineConfig } from "vite";
-import { fileURLToPath, URL } from "node:url";
-import vue from "@vitejs/plugin-vue";
-import MarkdownItAnchor from "markdown-it-anchor";
-import MarkdownItPrism from "markdown-it-prism";
-import Markdown from "unplugin-vue-markdown/vite";
-import cesium from "vite-plugin-cesium";
+import vue from '@vitejs/plugin-vue'
+import MarkdownItAnchor from 'markdown-it-anchor'
+import MarkdownItPrism from 'markdown-it-prism'
+import { URL, fileURLToPath } from 'node:url'
+import Markdown from 'unplugin-vue-markdown/vite'
+import { defineConfig } from 'vite'
+import cesium from 'vite-plugin-cesium'
 
 export default defineConfig({
   plugins: [
@@ -20,16 +20,25 @@ export default defineConfig({
         typographer: true,
       },
       markdownItSetup(md) {
-        md.use(MarkdownItAnchor);
-        md.use(MarkdownItPrism);
+        md.use(MarkdownItAnchor, {
+          permalink: MarkdownItAnchor.permalink.linkInsideHeader({
+            symbol: '#',
+            placement: 'before',
+            ariaHidden: true,
+          }),
+          level: [1, 2, 3],
+        })
+        md.use(MarkdownItPrism, {
+          plugins: ['line-numbers', 'highlight-keywords'],
+        })
       },
-      wrapperClasses: "markdown-body",
+      wrapperClasses: 'markdown-body',
     }),
   ],
-  assetsInclude: ["**/*.glb", "**/*.gltf"],
+  assetsInclude: ['**/*.glb', '**/*.gltf'],
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-});
+})

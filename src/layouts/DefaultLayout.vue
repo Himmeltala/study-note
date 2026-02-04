@@ -2,7 +2,7 @@
  * @Author: Himmeltala zhengrenfu@outlook.com
  * @Date: 2026-02-04 18:54:51
  * @LastEditors: Himmeltala zhengrenfu@outlook.com
- * @LastEditTime: 2026-02-04 23:40:08
+ * @LastEditTime: 2026-02-04 23:57:27
  * @Description: 默认布局
 -->
 <template>
@@ -30,7 +30,7 @@
             </el-icon>
             {{ isNoteCollapse ? '显示笔记' : '收起笔记' }}
           </el-button>
-          <el-icon @click="handleDarkModeChange">
+          <el-icon class="cursor-pointer" @click="handleDarkModeChange">
             <Moon v-if="!isDarkMode" />
             <Sunny v-else />
           </el-icon>
