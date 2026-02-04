@@ -3,22 +3,17 @@
 让图形在画布上左右 / 上下移动，核心是更新 x/y 坐标，碰到边界就反弹。
 
 ```js
-// 位移动画变量（全局存，不然每次都重置）
 let x = 0;
 let speed = 3; // 移动速度
 
 const drawMoveAnimation = () => {
-  // 1. 清空画布
   clearCanvas();
-  // 2. 更新位置：碰到左右边界就反弹
   x += speed;
   if (x < 0 || x > canvasRef.value.width - 100) {
     speed = -speed;
   }
-  // 3. 绘制矩形
   ctx.fillStyle = "#409eff";
   ctx.fillRect(x, 200, 100, 100);
-  // 4. 循环执行动画
   animationId = requestAnimationFrame(drawMoveAnimation);
 };
 ```
@@ -37,7 +32,6 @@ const drawRotateAnimation = () => {
   angle += 0.02;
 
   ctx.save();
-  // 绕中心旋转的固定套路：平移→旋转→平移回
   ctx.translate(400, 250);
   ctx.rotate(angle);
   ctx.translate(-400, -250);
@@ -90,7 +84,6 @@ const drawScaleAnimation = () => {
 同时让多个图形做不同动画，比如多个小球随机移动，核心是用数组存每个元素的参数，循环更新 + 绘制。
 
 ```js
-// 多元素动画：10个随机小球
 let balls = [];
 // 初始化小球
 const initBalls = () => {
