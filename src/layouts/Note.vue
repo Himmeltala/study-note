@@ -2,7 +2,7 @@
  * @Author: Himmeltala zhengrenfu@outlook.com
  * @Date: 2026-02-04 22:41:21
  * @LastEditors: Himmeltala zhengrenfu@outlook.com
- * @LastEditTime: 2026-02-04 22:50:17
+ * @LastEditTime: 2026-02-04 23:09:46
  * @Description: 学习笔记
 -->
 <script setup lang="js">
@@ -101,8 +101,8 @@ watch(
 <style scoped lang="scss">
 .note-aside {
   width: 420px;
-  background: #fff;
-  border-left: 1px solid #e4e7ed;
+  background-color: var(--el-fill-color-blank);
+  border-left: 1px solid var(--el-border-color);
   display: flex;
   flex-direction: column;
   transition:
@@ -117,8 +117,8 @@ watch(
   align-items: center;
   justify-content: space-between;
   padding: 0 16px;
-  border-bottom: 1px solid #ebeef5;
-  background: #fafafa;
+  border-bottom: 1px solid var(--el-border-color);
+  background-color: var(--el-fill-color-blank);
 }
 
 .note-title {
