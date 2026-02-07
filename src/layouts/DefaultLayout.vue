@@ -8,10 +8,10 @@
 <template>
   <div class="layout-container">
     <el-aside :width="isNavCollapse ? '60px' : '240px'" class="left-container">
-      <div class="logo-area">
-        <el-icon class="logo-icon"><MapLocation /></el-icon>
+      <router-link to="/" class="logo-area">
+        <el-icon class="logo-icon"><Notebook /></el-icon>
         <span class="logo-text" v-if="!isNavCollapse">学习笔记</span>
-      </div>
+      </router-link>
       <MlMenu class="nav-menu" v-model:collapse="isNavCollapse" />
     </el-aside>
     <div class="right-container">
@@ -19,12 +19,12 @@
         <MlBreadcrumb />
         <div class="header-actions">
           <el-button
+            plain
             type="primary"
             size="small"
-            :plain="isNoteCollapse"
             @click="isNoteCollapse = !isNoteCollapse"
           >
-            <el-icon>
+            <el-icon class="mr-2">
               <DocumentChecked v-if="!isNoteCollapse" />
               <Document v-else />
             </el-icon>
@@ -56,8 +56,8 @@ import { ref } from 'vue'
 import {
   Document,
   DocumentChecked,
-  MapLocation,
   Moon,
+  Notebook,
   Sunny,
 } from '@element-plus/icons-vue'
 
